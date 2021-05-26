@@ -47,7 +47,7 @@ function solution(input) {
 
 function write_result(n, result_data) {
   fs.writeFile(
-    `./soultion${n}.txt`,
+    `./solution${n}.json`,
     JSON.stringify(result_data),
     function (err) {
       if (err) {
