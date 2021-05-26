@@ -1,7 +1,6 @@
 var fs = require("fs");
 var data_1000 = fs.readFileSync("./1000.txt").toString("utf-8");
 var data_10000 = fs.readFileSync("./10000.txt").toString("utf-8");
-var data_100000 = fs.readFileSync("./100000.txt").toString("utf-8");
 
 function solution(input) {
   // Txt file 변환
@@ -46,32 +45,28 @@ function solution(input) {
   return answer;
 }
 
-function write_result(result_data, n) {
-  fs.writeFile(`./soultion${n}.txt`, JSON.stringify(result_data), function (
-    err
-  ) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("File saved");
+function write_result(n, result_data) {
+  fs.writeFile(
+    `./soultion${n}.txt`,
+    JSON.stringify(result_data),
+    function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("File saved");
+      }
     }
-  });
+  );
 }
 
 // 487.062ms 0.49초
 console.time("function #1");
 let result_1000 = solution(data_1000);
+write_result(1000, result_1000);
 console.timeEnd("function #1");
-write_result(result_1000, 1000);
 
 // 46002.384ms 46초
 console.time("function #2");
 let result_10000 = solution(data_10000);
+write_result(10000, result_10000);
 console.timeEnd("function #2");
-write_result(result_10000, 10000);
-
-// 5360802. 5360초
-console.time("function #3");
-let result_100000 = solution(data_100000);
-console.timeEnd("function #3");
-write_result(result_100000, 100000);
